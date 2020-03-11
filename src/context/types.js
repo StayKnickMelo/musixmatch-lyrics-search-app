@@ -1,0 +1,3 @@
+export const LOAD_TRACKS = 'LOAD_TRACKS';
+export const SEARCH_TRACKS = 'SEARCH_TRACKS';
+export const SWITCH_CHARTS = 'SWITCH_CHARTS';

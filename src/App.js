@@ -1,25 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LyricsState from './context/LyricsState';
+
+
+// Comp
+import NavBar from './comonents/layout/NavBar';
+import Home from './comonents/layout/Home';
+import Lyrics from './comonents/tracks/Lyrics';
+import NotFound from './comonents/layout/NotFound';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LyricsState>
+      <Router>
+        <Fragment>
+          <NavBar />
+          <div className="container">
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/lyrics/track/:id' component={Lyrics} />
+              <Route component={NotFound} />
+            </Switch>
+
+          </div>
+
+        </Fragment>
+      </Router>
+    </LyricsState>
   );
 }
 
